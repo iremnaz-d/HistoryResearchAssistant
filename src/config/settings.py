@@ -3,7 +3,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     exa_api_key : str
     gemini_api_key : str
-    gemini_model_name : str
+    GEMINI_MODEL_NAME : str
+    MAX_SEARCH_RESULTS : int = 5
 
 
     model_config = SettingsConfigDict(env_file = ".env")
