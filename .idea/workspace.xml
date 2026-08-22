@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="streamlit_app.py but doesnt work well">
-      <change afterPath="$PROJECT_DIR$/src/application/prompts/reformulate_query.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/prompts/context_build.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/prompts/context_build.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/rag/context_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/rag/context_builder.py" afterDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now.">
       <change beforePath="$PROJECT_DIR$/src/application/research/research_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/research/research_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/llm/gemini_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/llm/gemini_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/search/exa_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/search/exa_search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/ui/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ui/streamlit_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/entities/research_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/entities/research_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/llm_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/llm_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/search_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/search_engine.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787419241234</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now.">
+      <option name="closed" value="true" />
+      <created>1787423794809</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1787423794809</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -118,6 +124,7 @@
     <MESSAGE value="ExaSearch class, translate method in Query, Settings and API Key integrations" />
     <MESSAGE value="GeminiClient and ResearchService. Modifications on other classes." />
     <MESSAGE value="streamlit_app.py but doesnt work well" />
-    <option name="LAST_COMMIT_MESSAGE" value="streamlit_app.py but doesnt work well" />
+    <MESSAGE value="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now." />
+    <option name="LAST_COMMIT_MESSAGE" value="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now." />
   </component>
 </project>

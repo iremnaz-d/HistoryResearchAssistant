@@ -3,7 +3,7 @@ from pydantic import BaseModel, HttpUrl
 
 class ResearchResult(BaseModel):
     """
-    Çıkan sonucu, kullanılan kaynak linklerini ve güven skorunu tutacak model.
+    This model stores the search result from the search engine, the source used, and the confidence score
     """
 
     result_text : str

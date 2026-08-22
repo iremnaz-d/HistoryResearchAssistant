@@ -4,7 +4,7 @@ from typing import Optional
 
 class Query(BaseModel):
     """
-    Kullanıcının sorusunu temsil eden basit model.
+    A simple model representing the user's question.
     """
 
     raw_query: str
