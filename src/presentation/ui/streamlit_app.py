@@ -34,15 +34,15 @@ def main():
             st.markdown(raw_query)
 
         try:
-            response = research_service.get_research_answer(raw_query)
-            st.session_state.messages.append({'role': 'assistant', 'content': response})
-            with st.chat_message('assistant'):
+            response = research_service.get_research_answer(raw_query, st.session_state.messages)
+            st.session_state.messages.append({'role': 'model', 'content': response})
+            with st.chat_message('model'):
                 st.markdown(response)
 
         except ServerError:
             error_message = "AI Assistant is not available at this moment. Please try again a few minutes later."
-            st.session_state.messages.append({'role': 'assistant', 'content': error_message})
-            with st.chat_message('assistant'):
+            st.session_state.messages.append({'role': 'model', 'content': error_message})
+            with st.chat_message('model'):
                 st.markdown(error_message)
 
         except ClientError as e:
@@ -57,8 +57,8 @@ def main():
 
             else:
                 error_message = "Unexpected client error. Did you enter your API Key?"
-            st.session_state.messages.append({'role': 'assistant', 'content': error_message})
-            with st.chat_message('assistant'):
+            st.session_state.messages.append({'role': 'model', 'content': error_message})
+            with st.chat_message('model'):
                 st.markdown(error_message)
 
 main()

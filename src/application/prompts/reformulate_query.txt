@@ -1,0 +1,10 @@
+Review the chat history below and the user’s new question.
+Turn the new question into a complete and understandable search query on its own, incorporating the context from the history.
+Just write the new query; do not add any other explanations.
+
+Chat History:
+{chat_history}
+
+User's New Question:
+{user_query}
+

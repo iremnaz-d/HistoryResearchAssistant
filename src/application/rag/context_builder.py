@@ -15,7 +15,7 @@ class ContextBuilder:
         prompt = raw_prompt.format(
             user_query = query.raw_query,
             language = query.language,
-            sources = ResearchResult.list_to_text(search_results)
+            research_result = ResearchResult.list_to_text(search_results)
         )
 
         return prompt

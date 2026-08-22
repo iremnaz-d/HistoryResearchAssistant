@@ -20,15 +20,22 @@ class GeminiClient(LLMClientInterface):
         if self.client is None:
             raise ValueError("Gemini API Key not found.")
 
-        if history is None:
-            history = [text]
+        gemini_history = []
 
-        else:
-            history.append(text)
+        if history:
+            for message in history:
+                gemini_history.append(
+                    {"role":message['role'], "parts": [{"text": message['content']}]}
+                )
+
+        gemini_history.append(
+            {"role": "user", "parts": [{"text": text}]}
+        )
+
 
         response = self.client.models.generate_content(
             model = self.settings.GEMINI_MODEL_NAME,
-            contents = history
+            contents = gemini_history
         )
 
         return response

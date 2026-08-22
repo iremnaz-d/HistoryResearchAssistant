@@ -29,10 +29,10 @@ class ExaSearchEngine(SearchEngineInterface):
            return self.map_to_result_list(raw_response)
 
         except Exception as e:
-            return ResearchResult(
+            return [ResearchResult(
                 result_text = f"There has been an error during web research: {str(e)}",
                 source = None, confidence_score = 0.0
-            )
+            )]
 
 
     @staticmethod
@@ -42,13 +42,13 @@ class ExaSearchEngine(SearchEngineInterface):
         :return: "ResearchResult" Object List
         """
         if not raw_response.results:
-            return ResearchResult(result_text = "No results found.", source=None, confidence_score = 0.0)
+            return [ResearchResult(result_text = "No results found.", source=None, confidence_score = 0.0)]
 
         results = []
 
         for result in raw_response.results:
-            text = None
-            score = None
+            text = ""
+            score = 0.0
 
             if hasattr(result, "text") and result.text:
                 text = result.text
