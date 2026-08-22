@@ -10,7 +10,8 @@ from src.domain.interfaces.search_engine import SearchEngineInterface
 class ExaSearchEngine(SearchEngineInterface):
 
     def __init__(self):
-        self.exa = Exa(Settings.exa_api_key)
+        self.settings = Settings()
+        self.exa = Exa(self.settings.exa_api_key)
 
 
     def search(self, query: Query):
@@ -22,7 +23,7 @@ class ExaSearchEngine(SearchEngineInterface):
         try:
            raw_response =  self.exa.search(
                 query=query.research_question,
-                num_results = Settings.MAX_SEARCH_RESULTS,
+                num_results = self.settings.MAX_SEARCH_RESULTS,
                 contents={"highlights":True}, # type:ignore
             )
            return self.map_to_result_list(raw_response)

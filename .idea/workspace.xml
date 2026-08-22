@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="ExaSearch class, translate method in Query, Settings and API Key integrations">
-      <change afterPath="$PROJECT_DIR$/src/application/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/prompts/context_build.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/rag/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/rag/context_builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/research/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/research/research_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="GeminiClient and ResearchService. Modifications on other classes.">
+      <change afterPath="$PROJECT_DIR$/src/presentation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/presentation/ui/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/presentation/ui/streamlit_app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/research/research_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/research/research_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/entities/research_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_query.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/entities/research_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/llm_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/llm_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/llm/gemini_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/llm/gemini_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/search/exa_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/search/exa_search.py" afterDir="false" />
     </list>
@@ -101,12 +97,21 @@
       <option name="project" value="LOCAL" />
       <updated>1787341262222</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="GeminiClient and ResearchService. Modifications on other classes.">
+      <option name="closed" value="true" />
+      <created>1787402427874</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787402427874</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Trying to start the project. Entitites and interfaces are done i guess??" />
     <MESSAGE value="ExaSearch class, translate method in Query, Settings and API Key integrations" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExaSearch class, translate method in Query, Settings and API Key integrations" />
+    <MESSAGE value="GeminiClient and ResearchService. Modifications on other classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="GeminiClient and ResearchService. Modifications on other classes." />
   </component>
 </project>

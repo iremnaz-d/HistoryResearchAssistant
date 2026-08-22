@@ -7,7 +7,8 @@ from google.genai import types
 class GeminiClient(LLMClientInterface):
 
     def __init__(self, provided_api_key=None):
-        api_key = Settings.gemini_api_key or provided_api_key
+        self.settings = Settings()
+        api_key = self.settings.gemini_api_key or provided_api_key
 
         if not api_key:
             self.client = None
@@ -26,7 +27,7 @@ class GeminiClient(LLMClientInterface):
             history.append(text)
 
         response = self.client.models.generate_content(
-            model = Settings.GEMINI_MODEL_NAME,
+            model = self.settings.GEMINI_MODEL_NAME,
             contents = history
         )
 
