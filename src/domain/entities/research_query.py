@@ -12,13 +12,10 @@ class Query(BaseModel):
     research_question : Optional[str] = None
     language : Optional[str] = None
 
-    ##raw query'i questiona dönüştürme metodu yazıcam
 
     def __init__(self, raw_query):
         self.raw_query , self.language = asyncio.run(self.translate_to_english(raw_query))
-
-
-
+        self.research_question = self.raw_query #bunu Exa zaten semantic arama yaptığı için böyle yaptım, başka bir search enginede değiştirilebilir
 
 
     @staticmethod

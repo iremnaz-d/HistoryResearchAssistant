@@ -1,0 +1,18 @@
+from src.application.rag.context_builder import ContextBuilder
+from src.domain.entities.research_query import Query
+from src.domain.interfaces.llm_client import LLMClientInterface
+from src.domain.interfaces.search_engine import SearchEngineInterface
+
+
+class ResearchService:
+
+    def __init__(self, search_engine: SearchEngineInterface, llm_client: LLMClientInterface):
+        self.search_engine = search_engine
+        self.llm_client = llm_client
+
+    def get_research_answer(self, raw_query):
+        query = Query(raw_query)
+        search_results = self.search_engine.search(query)
+        context = ContextBuilder.build(query, search_results)
+        llm_response = self.llm_client.generate(context)
+        return llm_response.text

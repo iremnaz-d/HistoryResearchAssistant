@@ -10,19 +10,22 @@ from src.domain.interfaces.search_engine import SearchEngineInterface
 class ExaSearchEngine(SearchEngineInterface):
 
     def __init__(self):
-        self.settings = Settings()
-        self.exa = Exa(self.settings.exa_api_key)
+        self.exa = Exa(Settings.exa_api_key)
 
 
     def search(self, query: Query):
+        """
+        :param query: User 'Query' Object
+        :return: 'ResearchResult' Object List
+        """
 
         try:
            raw_response =  self.exa.search(
                 query=query.research_question,
-                num_results = self.settings.MAX_SEARCH_RESULTS,
-                contents={"text":True}, # type:ignore
+                num_results = Settings.MAX_SEARCH_RESULTS,
+                contents={"highlights":True}, # type:ignore
             )
-           return self.map_to_result(raw_response)
+           return self.map_to_result_list(raw_response)
 
         except Exception as e:
             return ResearchResult(
@@ -32,10 +35,10 @@ class ExaSearchEngine(SearchEngineInterface):
 
 
     @staticmethod
-    def map_to_result(raw_response):
+    def map_to_result_list(raw_response):
         """
         :param raw_response: raw search result taken from Exa API
-        :return: "Result" Object List
+        :return: "ResearchResult" Object List
         """
         if not raw_response.results:
             return ResearchResult(result_text = "No results found.", source=None, confidence_score = 0.0)

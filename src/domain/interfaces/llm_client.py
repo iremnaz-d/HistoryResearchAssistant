@@ -7,6 +7,6 @@ class LLMClientInterface(ABC):
     """
 
     @abstractmethod
-    def generate(self):
+    def generate(self, text, tools = None, history = None):
         pass
 

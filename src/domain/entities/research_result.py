@@ -11,5 +11,11 @@ class ResearchResult(BaseModel):
     source : Optional[HttpUrl] = None
     confidence_score : float
 
+    @staticmethod
+    def list_to_text(results: list[ResearchResult]):
+        s = ""
+        for result in results:
+            s += str(result.source)
+            s += "\n" + result.result_text + "\n\n"
 
-
+        return s
