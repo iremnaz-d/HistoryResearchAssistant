@@ -99,11 +99,11 @@ class KuzuDB(GraphStoreInterface):
         else:
             raise ValueError("Invalid Entity Type")
 
-    def add_relation(self,source, target, relation_type):
+    def add_relation(self,source, target, relation_type, evidence_url = None):
         source_label = source.__class__.__name__
         target_label = target.__class__.__name__
 
-        ddl_query = f"CREATE REL TABLE IF NOT EXISTS {relation_type} (FROM {source_label} TO {target_label})"
+        ddl_query = f"CREATE REL TABLE IF NOT EXISTS {relation_type} (FROM {source_label} TO {target_label}, evidence_url STRING)"
         try:
             self.conn.execute(ddl_query)
         except RuntimeError:
@@ -112,11 +112,13 @@ class KuzuDB(GraphStoreInterface):
         query = f"""
         MATCH (src:{source_label}{{id: $source_id}}), (tgt:{target_label}{{id: $target_id}})
         MERGE (src)-[r:{relation_type}]->(tgt)
+        ON CREATE SET r.evidence_url = $evidence_url
         """
 
         params = {
             "source_id" : source.id,
-            "target_id" : target.id
+            "target_id" : target.id,
+            "evidence_url": str(evidence_url) if evidence_url else None
         }
 
         self.conn.execute(query, parameters = params)

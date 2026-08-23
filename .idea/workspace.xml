@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Switched to 3.13 from 3.14 for KuzuDB">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Switched to 3.13 from 3.14 for KuzuDB. KuzuDB Graph Database is done">
+      <change afterPath="$PROJECT_DIR$/src/application/rag/indexing_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/interfaces/graph_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/graph_store.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/llm_clients/groq_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/llm_clients/groq_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/persistance/KuzuDB_graph_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/persistance/KuzuDB_graph_store.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787506145297</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Switched to 3.13 from 3.14 for KuzuDB. KuzuDB Graph Database is done">
+      <option name="closed" value="true" />
+      <created>1787518336108</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1787518336109</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -155,6 +161,7 @@
     <MESSAGE value="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files." />
     <MESSAGE value="Domain Layer for Knowledge Graph system. Historical Entities and Memory Store Interface" />
     <MESSAGE value="I don't even remember what i've done. I can say so much things? I decided the project to be a GraphRag AND SAG system. Now i'm gonna learn KuzuDB" />
-    <option name="LAST_COMMIT_MESSAGE" value="I don't even remember what i've done. I can say so much things? I decided the project to be a GraphRag AND SAG system. Now i'm gonna learn KuzuDB" />
+    <MESSAGE value="Switched to 3.13 from 3.14 for KuzuDB. KuzuDB Graph Database is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched to 3.13 from 3.14 for KuzuDB. KuzuDB Graph Database is done" />
   </component>
 </project>

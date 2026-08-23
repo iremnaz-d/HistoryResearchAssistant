@@ -7,7 +7,7 @@ class GraphStoreInterface(ABC):
         pass
 
     @abstractmethod
-    def add_relation(self, source, target, relation_type):
+    def add_relation(self, source, target, relation_type, evidence_url):
         pass
 
     @abstractmethod
