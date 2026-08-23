@@ -1,12 +1,19 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
 
 
 class Settings(BaseSettings):
     exa_api_key : str
     gemini_api_key : str
     groq_api_key : str
+
     GEMINI_MODEL_NAME : str = "gemini-3.6-flash"
-    MAX_SEARCH_RESULTS : int = 5
+    GROQ_MODEL_NAME : str = "llama-3.3-70b-versatile"
+
+    MAX_SEARCH_RESULTS : int = 5 #web search
+
+    GRAPH_DB_PATH : str = str(Path(__file__).resolve().parent.parent.parent / "graph_db")
+
 
 
     model_config = SettingsConfigDict(

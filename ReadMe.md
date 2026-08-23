@@ -44,6 +44,8 @@ GraphRag
 Projenin GitHub'dan indirilip herkes tarafından anında çalıştırılabilir (plug-and-play) 
 olmasını istediğin için devasa sunucu kurulumları gerektiren araçlardan (Neo4j vb.) uzak durmalısın.
 
+KuzuDB için Python 3.14'ten düşük version olmalı
+
 
 # FUTURE IMPROVEMENTS
 

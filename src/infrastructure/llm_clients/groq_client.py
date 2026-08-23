@@ -27,7 +27,7 @@ class GroqClient(LLMClientInterface):
             history.append({"role":"user", "content": text})
 
         response = self.client.chat.completions.create(
-            model = "llama-3.3-70b-versatile",
+            model = self.settings.GROQ_MODEL_NAME,
             messages = history
         )
 
