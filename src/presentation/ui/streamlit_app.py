@@ -7,8 +7,8 @@ sys.path.insert(0, project_root)
 
 import streamlit as st
 from src.application.research.research_service import ResearchService
-from src.infrastructure.llm.gemini_client import GeminiClient
-from src.infrastructure.search.exa_search import ExaSearchEngine
+from src.infrastructure.llm_clients.gemini_client import GeminiClient
+from src.infrastructure.search_engines.exa_search import ExaSearchEngine
 from google.genai.errors import ServerError, ClientError
 
 

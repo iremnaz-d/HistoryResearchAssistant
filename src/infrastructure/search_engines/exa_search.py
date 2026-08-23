@@ -38,7 +38,7 @@ class ExaSearchEngine(SearchEngineInterface):
     @staticmethod
     def map_to_result_list(raw_response):
         """
-        :param raw_response: raw search result taken from Exa API
+        :param raw_response: raw search_engines result taken from Exa API
         :return: "ResearchResult" Object List
         """
         if not raw_response.results:

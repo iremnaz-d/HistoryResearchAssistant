@@ -4,15 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files.">
-      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_concept.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_event.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_person.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_place.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_relationship.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/interfaces/memory_store.py" afterDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Domain Layer for Knowledge Graph system. Historical Entities and Memory Store Interface">
+      <change afterPath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/prompts/entity_extract.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/interfaces/graph_store.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/interfaces/vector_store.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/llm_clients/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/llm_clients/groq_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/persistance/KuzuDB_graph_store.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/persistance/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/search_engines/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/research/research_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/research/research_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/entities/research_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/memory_store.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/llm/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/llm/gemini_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/llm_clients/gemini_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graph/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/search/exa_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/search_engines/exa_search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/ui/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ui/streamlit_app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +72,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\irem naz\Desktop\HistoryResearchAssistant\src\application" />
+      <recent name="C:\Users\irem naz\Desktop\HistoryResearchAssistant\src\domain\entities\historical_entities" />
       <recent name="C:\Users\irem naz\Desktop\HistoryResearchAssistant\src" />
     </key>
   </component>
@@ -127,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787425415716</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Domain Layer for Knowledge Graph system. Historical Entities and Memory Store Interface">
+      <option name="closed" value="true" />
+      <created>1787490654818</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1787490654818</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -137,6 +158,7 @@
     <MESSAGE value="streamlit_app.py but doesnt work well" />
     <MESSAGE value="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now." />
     <MESSAGE value="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files." />
-    <option name="LAST_COMMIT_MESSAGE" value="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files." />
+    <MESSAGE value="Domain Layer for Knowledge Graph system. Historical Entities and Memory Store Interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="Domain Layer for Knowledge Graph system. Historical Entities and Memory Store Interface" />
   </component>
 </project>

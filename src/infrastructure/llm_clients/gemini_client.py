@@ -1,7 +1,6 @@
 from src.config.settings import Settings
 from src.domain.interfaces.llm_client import LLMClientInterface
 from google import genai
-from google.genai import types
 
 
 class GeminiClient(LLMClientInterface):

@@ -3,7 +3,7 @@ from pydantic import BaseModel, HttpUrl
 
 class ResearchResult(BaseModel):
     """
-    This model stores the search result from the search engine, the source used, and the confidence score
+    This model stores the search_engines result from the search_engines engine, the source used, and the confidence score
     """
 
     result_text : str

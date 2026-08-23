@@ -14,7 +14,7 @@ class ResearchService:
     def get_research_answer(self, raw_query, chat_history):
 
         query = self.create_processed_query(raw_query, chat_history) # gets 'Query' object from raw_query
-        search_results = self.search_engine.search(query) # gets web search results from Search Engine
+        search_results = self.search_engine.search(query) # gets web search_engines results from Search Engine
         context = ContextBuilder.build(query, search_results) # gets the context to send the main LLM
         llm_response = self.llm_client.generate(context, history = chat_history) #gets the final answer from LLM
         return llm_response.text
