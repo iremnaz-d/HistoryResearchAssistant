@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now.">
-      <change beforePath="$PROJECT_DIR$/src/application/research/research_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/research/research_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/entities/research_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/entities/research_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/llm_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/llm_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/search_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/search_engine.py" afterDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files.">
+      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_concept.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_event.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_person.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_place.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_relationship.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/interfaces/memory_store.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,16 +49,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Python&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\irem naz\Desktop\HistoryResearchAssistant\src" />
@@ -116,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787423794809</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files.">
+      <option name="closed" value="true" />
+      <created>1787425415716</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1787425415716</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -125,6 +136,7 @@
     <MESSAGE value="GeminiClient and ResearchService. Modifications on other classes." />
     <MESSAGE value="streamlit_app.py but doesnt work well" />
     <MESSAGE value="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Exa API and Gemini API are modificated to answer follow-up questions as well. Assistant can answer questions clearly now." />
+    <MESSAGE value="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files." />
+    <option name="LAST_COMMIT_MESSAGE" value="The SAG portion of the project is officially complete. Now I’ll try to get the model to learn new information from each question and build a database. Without uploading files." />
   </component>
 </project>
