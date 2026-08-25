@@ -1,11 +1,14 @@
 from abc import ABC, abstractmethod
 
+from src.domain.entities.document import Document
+
+
 class VectorStoreInterface(ABC):
 
     @abstractmethod
-    def add_documents(self, texts, metadata):
+    def add_documents(self, documents:list[Document]):
         pass
 
     @abstractmethod
-    def similarity_search(self, query_vector):
+    def search(self, query : str):
         pass

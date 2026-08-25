@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     MAX_SEARCH_RESULTS : int = 5 #web search
 
     GRAPH_DB_PATH : str = str(Path(__file__).resolve().parent.parent.parent / "graph_db")
+    VECTOR_DB_PATH : str = str(Path(__file__).resolve().parent.parent.parent / "vector_db")
 
 
 
