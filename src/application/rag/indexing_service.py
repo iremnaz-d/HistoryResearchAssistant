@@ -15,7 +15,7 @@ class GraphIndexingService:
 
     def save(self, results: list[ResearchResult]):
 
-        entity_list, relation_list = self.extractor.extract(results)
+        entity_list, relation_list = self.extractor.extract(results = results)
 
         entity_lookup = {}
         for entity in entity_list:

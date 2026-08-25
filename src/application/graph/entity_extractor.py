@@ -13,15 +13,27 @@ class EntityExtractor:
     def __init__(self, llm_client: LLMClientInterface):
         self.llm_client = llm_client
 
-    def extract(self, results : list[ResearchResult]):
-        full_result = ResearchResult.list_to_text(results) #web search results from search engine
+    def extract(self, results : list[ResearchResult] = None , query:str = None):
 
-        with open("src/application/prompts/entity_extract.txt", "r", encoding = "utf-8") as f:
-            raw_prompt = f.read()
+        if(results is None and query is None) or (results is not None and query is not None):
+            raise ValueError("Prompt seems to be None. 'extract' method in EntityExtractor got invalid parameter")
 
-        prompt = raw_prompt.format(provided_sources = full_result)
+        prompt = ""
+        if query is None:
+            full_result = ResearchResult.list_to_text(results)  # web search results from search engine
 
-        structured_json_output = self.llm_client.generate(text = prompt)
+            with open("src/application/prompts/entity_extract_results.txt", "r", encoding="utf-8") as f:
+                raw_prompt = f.read()
+
+            prompt = raw_prompt.format(provided_sources=full_result)
+
+        elif results is None:
+            with open("src/application/prompts/entity_extract_query.txt", "r", encoding="utf-8") as f:
+                raw_prompt = f.read()
+
+            prompt = raw_prompt.format(query=query)
+
+        structured_json_output = self.llm_client.generate(text=prompt)
         entities_dict = json.loads(structured_json_output)
 
         entity_list , relation_list= self._map_to_historical_entity(entities_dict)

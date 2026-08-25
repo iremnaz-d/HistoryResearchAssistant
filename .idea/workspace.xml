@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="EmbeddingModelInterface, Document, BGE-M3 Embedding Model, ChromaDB Vector DB">
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="VectorIndexingService">
+      <change afterPath="$PROJECT_DIR$/src/application/prompts/entity_extract_query.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/rag/retrieval_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/prompts/entity_extract.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/prompts/entity_extract_results.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/rag/indexing_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/rag/indexing_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/entities/research_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/embedding_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/embedding_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/embeddings/BGE_M3_embedding_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/embeddings/BGE_M3_embedding_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/persistance/ChromaDB_vector_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/persistance/ChromaDB_vector_store.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787658670319</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="VectorIndexingService">
+      <option name="closed" value="true" />
+      <created>1787663428368</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1787663428368</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -181,6 +189,7 @@
     <MESSAGE value="Switched to 3.13 from 3.14 for KuzuDB. KuzuDB Graph Database is done" />
     <MESSAGE value="Entity Extractor and GraphIndexingService for Knowledge Graph" />
     <MESSAGE value="EmbeddingModelInterface, Document, BGE-M3 Embedding Model, ChromaDB Vector DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="EmbeddingModelInterface, Document, BGE-M3 Embedding Model, ChromaDB Vector DB" />
+    <MESSAGE value="VectorIndexingService" />
+    <option name="LAST_COMMIT_MESSAGE" value="VectorIndexingService" />
   </component>
 </project>
