@@ -1,7 +1,10 @@
 from src.application.graph.entity_extractor import EntityExtractor
+from src.domain.entities.document import Document
 from src.domain.entities.research_result import ResearchResult
 from src.domain.interfaces.graph_store import GraphStoreInterface
+from src.domain.interfaces.vector_store import VectorStoreInterface
 from src.infrastructure.llm_clients.groq_client import GroqClient
+import hashlib
 
 class GraphIndexingService:
 
@@ -32,3 +35,17 @@ class GraphIndexingService:
                 )
             else:
                 raise ValueError("Source or Target is not found in GraphIndexingService")
+
+class VectorIndexingService:
+
+    def __init__(self, vector_db : VectorStoreInterface):
+        self.vector_db = vector_db
+
+    def save(self, results:list[ResearchResult]):
+        documents = []
+        for result in results:
+            document_id = hashlib.sha256(result.result_text.encode("utf-8")).hexdigest()
+            documents.append(Document(id = document_id, text = result.result_text, source = result.source))
+
+        self.vector_db.add_documents(documents)
+

@@ -1,9 +1,8 @@
 from src.config.settings import Settings
 from src.domain.entities.document import Document
-from src.domain.interfaces.embedding_service import EmbeddingModelInterface
+from src.domain.interfaces.embedding_model import EmbeddingModelInterface
 from src.domain.interfaces.vector_store import VectorStoreInterface
 import chromadb
-
 
 class ChromaDB(VectorStoreInterface):
 

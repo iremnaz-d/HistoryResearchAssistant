@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Entity Extractor and GraphIndexingService for Knowledge Graph">
-      <change afterPath="$PROJECT_DIR$/src/domain/entities/document.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/interfaces/embedding_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/embeddings/BGE_M3_embedding_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/embeddings/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/persistance/ChromaDB_vector_store.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/vector_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/vector_store.py" afterDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="EmbeddingModelInterface, Document, BGE-M3 Embedding Model, ChromaDB Vector DB">
+      <change beforePath="$PROJECT_DIR$/src/application/rag/indexing_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/rag/indexing_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/entities/research_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/research_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/interfaces/embedding_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interfaces/embedding_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/embeddings/BGE_M3_embedding_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/embeddings/BGE_M3_embedding_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/persistance/ChromaDB_vector_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/persistance/ChromaDB_vector_store.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787523096262</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="EmbeddingModelInterface, Document, BGE-M3 Embedding Model, ChromaDB Vector DB">
+      <option name="closed" value="true" />
+      <created>1787658670319</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1787658670319</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -175,6 +180,7 @@
     <MESSAGE value="I don't even remember what i've done. I can say so much things? I decided the project to be a GraphRag AND SAG system. Now i'm gonna learn KuzuDB" />
     <MESSAGE value="Switched to 3.13 from 3.14 for KuzuDB. KuzuDB Graph Database is done" />
     <MESSAGE value="Entity Extractor and GraphIndexingService for Knowledge Graph" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entity Extractor and GraphIndexingService for Knowledge Graph" />
+    <MESSAGE value="EmbeddingModelInterface, Document, BGE-M3 Embedding Model, ChromaDB Vector DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="EmbeddingModelInterface, Document, BGE-M3 Embedding Model, ChromaDB Vector DB" />
   </component>
 </project>

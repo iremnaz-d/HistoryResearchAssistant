@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 
-from src.domain.interfaces.embedding_service import EmbeddingModelInterface
+from src.domain.interfaces.embedding_model import EmbeddingModelInterface
 
 
 class BgeEmbedding(EmbeddingModelInterface):

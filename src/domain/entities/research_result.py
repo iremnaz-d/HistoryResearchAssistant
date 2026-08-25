@@ -11,7 +11,7 @@ class ResearchResult(BaseModel):
     confidence_score : float
 
     @staticmethod
-    def list_to_text(results: list[ResearchResult]):
+    def list_to_text(results: list["ResearchResult"]):
         s = ""
         for result in results:
             s += str(result.source)
