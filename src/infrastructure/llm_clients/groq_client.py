@@ -7,7 +7,7 @@ class GroqClient(LLMClientInterface):
 
     def __init__(self, provided_api_key=None):
         self.settings = Settings()
-        api_key = self.settings.openai_api_key or provided_api_key
+        api_key = self.settings.groq_api_key or provided_api_key
 
         if not api_key:
             self.client = None
@@ -23,8 +23,8 @@ class GroqClient(LLMClientInterface):
         if not history:
             history = []
 
-        else:
-            history.append({"role":"user", "content": text})
+
+        history.append({"role":"user", "content": text})
 
         response = self.client.chat.completions.create(
             model = self.settings.GROQ_MODEL_NAME,

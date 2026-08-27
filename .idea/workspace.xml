@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Added rag to Research Service and Context Builder">
-      <change afterPath="$PROJECT_DIR$/src/application/agent/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/agent/router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/prompts/router.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/research/main_research_flow.py" afterDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="Router and Main Research Flow">
+      <change beforePath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/rag/context_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/rag/context_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/rag/indexing_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/rag/indexing_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/rag/retrieval_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/rag/retrieval_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/research/main_research_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/research/main_research_flow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/research/research_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/research/research_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/llm_clients/groq_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/llm_clients/groq_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/ui/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ui/streamlit_app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787831721340</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Router and Main Research Flow">
+      <option name="closed" value="true" />
+      <created>1787836509014</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1787836509014</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -208,6 +220,7 @@
     <MESSAGE value="VectorIndexingService" />
     <MESSAGE value="Additions to EntityExtractor, GraphRetrievalService, VectorRetrievalService" />
     <MESSAGE value="Added rag to Research Service and Context Builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added rag to Research Service and Context Builder" />
+    <MESSAGE value="Router and Main Research Flow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Router and Main Research Flow" />
   </component>
 </project>

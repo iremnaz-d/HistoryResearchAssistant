@@ -13,13 +13,13 @@ from src.domain.interfaces.vector_store import VectorStoreInterface
 
 class ResearchService:
 
-    def __init__(self, search_engine: SearchEngineInterface, llm_client: LLMClientInterface,
-                 embedding_model : EmbeddingModelInterface, graph_db: GraphStoreInterface,
-                 vector_db : VectorStoreInterface):
+    def __init__(self, search_engine: SearchEngineInterface, llm_client_1: LLMClientInterface,
+                 llm_client_2 :LLMClientInterface,
+                 graph_db: GraphStoreInterface,vector_db : VectorStoreInterface):
 
         self.search_engine = search_engine
-        self.llm_client = llm_client
-        self.embedding_model = embedding_model
+        self.llm_client_1 = llm_client_1
+        self.llm_client_2 = llm_client_2
         self.graph_db = graph_db
         self.vector_db = vector_db
 
@@ -31,7 +31,7 @@ class ResearchService:
         query , reformulated_query = self.create_processed_query(raw_query, chat_history) # gets 'Query' object from raw_query
         search_results = self.search_engine.search(query) # gets web search_engines results from Search Engine
         context = ContextBuilder.build_web(query, search_results) # gets the context to send the main LLM
-        llm_response = self.llm_client.generate(context, history = chat_history) #gets the final answer from LLM
+        llm_response = self.llm_client_1.generate(context, history = chat_history) #gets the final answer from LLM
         return llm_response.text, search_results
 
     def get_research_answer_rag(self, raw_query, chat_history):
@@ -40,7 +40,7 @@ class ResearchService:
         graph_results = self.graph_retrieval_service.retrieve(query = query.raw_query)
         vector_results = self.vector_retrieval_service.retrieve(query = query.raw_query)
 
-        router = Router(llm_client = self.llm_client)
+        router = Router(llm_client = self.llm_client_2)
         sufficient = router.is_sufficient(query = reformulated_query, graph_results = graph_results, vector_results = vector_results)
 
         if not sufficient:
@@ -48,7 +48,7 @@ class ResearchService:
 
         else:
             context = ContextBuilder.build_rag(query=query, results=graph_results, documents=vector_results)
-            llm_response = self.llm_client.generate(context, history=chat_history)
+            llm_response = self.llm_client_1.generate(context, history=chat_history)
             return llm_response.text
 
     def create_processed_query(self, raw_query, chat_history):
@@ -85,7 +85,7 @@ class ResearchService:
             chat_history = str(chat_history),
             user_query = query
         )
-        new_query = self.llm_client.generate(prompt)
+        new_query = self.llm_client_2.generate(text = prompt)
         return new_query.text
 
     @staticmethod

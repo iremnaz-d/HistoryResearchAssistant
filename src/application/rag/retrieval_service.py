@@ -1,13 +1,14 @@
 from src.application.graph.entity_extractor import EntityExtractor
 from src.domain.interfaces.graph_store import GraphStoreInterface
 from src.domain.interfaces.vector_store import VectorStoreInterface
+from src.infrastructure.llm_clients.gemini_client import GeminiClient
 from src.infrastructure.llm_clients.groq_client import GroqClient
 
 class GraphRetrievalService:
 
     def __init__(self, graph_db: GraphStoreInterface):
         self.graph_db = graph_db
-        llm_client = GroqClient()
+        llm_client = GeminiClient() #burası da groq client
         self.entity_extractor = EntityExtractor(llm_client)
 
     def retrieve(self, query: str):

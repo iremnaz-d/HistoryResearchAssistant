@@ -3,6 +3,7 @@ from src.domain.entities.document import Document
 from src.domain.entities.research_result import ResearchResult
 from src.domain.interfaces.graph_store import GraphStoreInterface
 from src.domain.interfaces.vector_store import VectorStoreInterface
+from src.infrastructure.llm_clients.gemini_client import GeminiClient
 from src.infrastructure.llm_clients.groq_client import GroqClient
 import hashlib
 
@@ -10,7 +11,7 @@ class GraphIndexingService:
 
     def __init__(self, graph_store: GraphStoreInterface):
         self.graph_store = graph_store
-        llm_client = GroqClient()
+        llm_client = GeminiClient()  #burası da groq client normalde
         self.extractor = EntityExtractor(llm_client)
 
     def save(self, results: list[ResearchResult]):

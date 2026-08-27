@@ -23,13 +23,15 @@ class ContextBuilder:
 
     @staticmethod
     def build_rag(query:Query, results:list[list[ResearchResult]], documents : list[Document]):
+        result_list = [i for sublist in results for i in sublist]
+
         with open("src/application/prompts/context_build_rag.txt", "r", encoding = "utf-8") as f:
             raw_prompt = f.read()
 
         prompt = raw_prompt.format(
             user_query = query.raw_query,
             language = query.language,
-            results = ResearchResult.list_to_text(*results),
+            results = ResearchResult.list_to_text(result_list),
             documents = Document.list_to_text(documents)
         )
 

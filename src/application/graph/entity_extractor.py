@@ -25,15 +25,15 @@ class EntityExtractor:
             with open("src/application/prompts/entity_extract_results.txt", "r", encoding="utf-8") as f:
                 raw_prompt = f.read()
 
-            prompt = raw_prompt.format(provided_sources=full_result)
+            prompt = raw_prompt.replace("provided_sources", full_result)
 
         elif results is None:
             with open("src/application/prompts/entity_extract_query.txt", "r", encoding="utf-8") as f:
                 raw_prompt = f.read()
 
-            prompt = raw_prompt.format(query=query)
+            prompt = raw_prompt.replace("{query}", query)
 
-        structured_json_output = self.llm_client.generate(text=prompt)
+        structured_json_output = self.llm_client.generate(text=prompt).text
         entities_dict = json.loads(structured_json_output)
 
         entity_list , relation_list= self._map_to_historical_entity(entities_dict)

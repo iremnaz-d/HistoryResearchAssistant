@@ -1,12 +1,16 @@
 import sys
 import os
 
+
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
 sys.path.insert(0, project_root)
 
-
+from src.infrastructure.llm_clients.groq_client import GroqClient
+from src.application.research.main_research_flow import MainResearchService
+from src.infrastructure.embeddings.BGE_M3_embedding_model import BgeEmbedding
+from src.infrastructure.persistance.ChromaDB_vector_store import ChromaDB
+from src.infrastructure.persistance.KuzuDB_graph_store import KuzuDB
 import streamlit as st
-from src.application.research.research_service import ResearchService
 from src.infrastructure.llm_clients.gemini_client import GeminiClient
 from src.infrastructure.search_engines.exa_search import ExaSearchEngine
 from google.genai.errors import ServerError, ClientError
@@ -15,8 +19,19 @@ from google.genai.errors import ServerError, ClientError
 
 def main():
     search_engine = ExaSearchEngine()
-    llm_client = GeminiClient()
-    research_service = ResearchService(search_engine, llm_client)
+    llm_client_1 = GeminiClient()
+    llm_client_2 = GeminiClient() #bunun groq olması gerekiyo da error verdi
+    embedding_model = BgeEmbedding()
+    graph_db = KuzuDB()
+    vector_db = ChromaDB(embedding_model = embedding_model)
+
+    research_service = MainResearchService(
+        search_engine = search_engine,
+        llm_client_1 = llm_client_1,
+        llm_client_2 = llm_client_2,
+        graph_db = graph_db,
+        vector_db = vector_db
+    )
 
 
     # rendering chat history
@@ -34,7 +49,7 @@ def main():
             st.markdown(raw_query)
 
         try:
-            response = research_service.get_research_answer(raw_query, st.session_state.messages)
+            response = research_service.get_answer(raw_query = raw_query, chat_history = st.session_state.messages)
             st.session_state.messages.append({'role': 'model', 'content': response})
             with st.chat_message('model'):
                 st.markdown(response)

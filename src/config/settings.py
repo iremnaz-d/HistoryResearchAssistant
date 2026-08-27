@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     groq_api_key : str
 
     GEMINI_MODEL_NAME : str = "gemini-3.6-flash"
-    GROQ_MODEL_NAME : str = "llama-3.3-70b-versatile"
+    GROQ_MODEL_NAME : str = "llama-3.1-70b-versatile"
 
     MAX_SEARCH_RESULTS : int = 5 #web search
 
