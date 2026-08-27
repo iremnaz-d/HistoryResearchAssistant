@@ -1,3 +1,4 @@
+from src.application.agent.router import Router
 from src.application.rag.context_builder import ContextBuilder
 from src.application.rag.retrieval_service import GraphRetrievalService, VectorRetrievalService
 from src.domain.entities.research_query import Query
@@ -7,11 +8,7 @@ from src.domain.interfaces.llm_client import LLMClientInterface
 from src.domain.interfaces.search_engine import SearchEngineInterface
 from deep_translator import GoogleTranslator
 from langdetect import detect
-
 from src.domain.interfaces.vector_store import VectorStoreInterface
-from src.infrastructure.embeddings.BGE_M3_embedding_model import BgeEmbedding
-from src.infrastructure.persistance.ChromaDB_vector_store import ChromaDB
-from src.infrastructure.persistance.KuzuDB_graph_store import KuzuDB
 
 
 class ResearchService:
@@ -31,22 +28,28 @@ class ResearchService:
 
     def get_research_answer_web(self, raw_query, chat_history):
 
-        query = self.create_processed_query(raw_query, chat_history) # gets 'Query' object from raw_query
+        query , reformulated_query = self.create_processed_query(raw_query, chat_history) # gets 'Query' object from raw_query
         search_results = self.search_engine.search(query) # gets web search_engines results from Search Engine
         context = ContextBuilder.build_web(query, search_results) # gets the context to send the main LLM
         llm_response = self.llm_client.generate(context, history = chat_history) #gets the final answer from LLM
-        return llm_response.text
+        return llm_response.text, search_results
 
     def get_research_answer_rag(self, raw_query, chat_history):
-        query = self.create_processed_query(raw_query, chat_history)  # gets 'Query' object from raw_query
+        query, reformulated_query = self.create_processed_query(raw_query, chat_history)  # gets 'Query' object from raw_query
 
         graph_results = self.graph_retrieval_service.retrieve(query = query.raw_query)
         vector_results = self.vector_retrieval_service.retrieve(query = query.raw_query)
 
-        context = ContextBuilder.build_rag(query = query, results = graph_results, documents = vector_results)
-        llm_response = self.llm_client.generate(context, history = chat_history)
-        return llm_response.text
+        router = Router(llm_client = self.llm_client)
+        sufficient = router.is_sufficient(query = reformulated_query, graph_results = graph_results, vector_results = vector_results)
 
+        if not sufficient:
+            return False
+
+        else:
+            context = ContextBuilder.build_rag(query=query, results=graph_results, documents=vector_results)
+            llm_response = self.llm_client.generate(context, history=chat_history)
+            return llm_response.text
 
     def create_processed_query(self, raw_query, chat_history):
         """
@@ -60,7 +63,7 @@ class ResearchService:
         query, language = self.translate_to_english(raw_query)
         reformulated_query = self.reformulate_query(query, chat_history)
         research_query = f"A detailed historical and academic article about: {reformulated_query}"
-        return Query(raw_query = query, research_question = research_query, language = language)
+        return Query(raw_query = query, research_question = research_query, language = language), reformulated_query
 
     def reformulate_query(self, query:str, chat_history: list[str]):
         """

@@ -1,0 +1,14 @@
+User Query : {user_query}
+System Sources:
+
+{graph_results}
+
+{vector_results}
+
+You are a router to decide whether system information is enough, or the question should be searched through internet.
+Is the information in the system sufficient to answer the user's question?
+
+If it is not enough, return "False"
+If it is enough, return "True"
+
+RETURN ONLY ONE WORD. "True" or "False"
