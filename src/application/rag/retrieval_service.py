@@ -3,7 +3,6 @@ from src.domain.interfaces.graph_store import GraphStoreInterface
 from src.domain.interfaces.vector_store import VectorStoreInterface
 from src.infrastructure.llm_clients.groq_client import GroqClient
 
-
 class GraphRetrievalService:
 
     def __init__(self, graph_db: GraphStoreInterface):
