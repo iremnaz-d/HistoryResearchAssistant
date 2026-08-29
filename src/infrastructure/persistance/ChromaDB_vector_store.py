@@ -19,7 +19,7 @@ class ChromaDB(VectorStoreInterface):
         embeddings = []
         for document in documents:
             texts.append(document.text)
-            sources.append({"source":document.source} if document.source else {"source":None})
+            sources.append({"source": str(document.source)} if document.source else {"source": ""})
             ids.append(document.id)
             embeddings.append(self.embedding_model.embed(text = document.text))
 

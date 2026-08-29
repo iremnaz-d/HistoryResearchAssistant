@@ -6,6 +6,7 @@ from src.domain.entities.historical_entities.historical_relationship import Rela
 from src.domain.entities.research_result import ResearchResult
 from src.domain.interfaces.llm_client import LLMClientInterface
 import json
+from datetime import datetime
 
 
 class EntityExtractor:
@@ -49,16 +50,16 @@ class EntityExtractor:
                 for entity_dict in value:
                     _id = entity_dict.get("id")
                     _name = entity_dict.get("name")
-                    _birth_date = entity_dict.get("birth_date")
-                    _death_date = entity_dict.get("death_date")
+                    _birth_date = EntityExtractor._parse_date(entity_dict.get("birth_date"))
+                    _death_date = EntityExtractor._parse_date(entity_dict.get("death_date"))
                     entity_list.append(Person(id = _id, name = _name, birth_date = _birth_date, death_date = _death_date))
 
             elif key == "events":
                 for entity_dict in value:
                     _id = entity_dict.get("id")
                     _name = entity_dict.get("name")
-                    _start_date = entity_dict.get("start_date")
-                    _end_date = entity_dict.get("end_date")
+                    _start_date = EntityExtractor._parse_date(entity_dict.get("start_date"))
+                    _end_date = EntityExtractor._parse_date(entity_dict.get("end_date"))
                     _description = entity_dict.get("description")
                     entity_list.append(Event(id=_id, name=_name, start_date=_start_date, end_date=_end_date, description = _description))
 
@@ -87,3 +88,18 @@ class EntityExtractor:
                 raise ValueError("LLM's Json Structured Output is wrong")
 
         return entity_list, relation_list
+
+    @staticmethod
+    def _parse_date(date_string):
+        if not date_string:
+            return None
+
+        try:
+            return datetime.strptime(date_string, "%Y-%m-%d").date()
+
+        except ValueError:
+            try:
+                return datetime.strptime(date_string, "%Y").date()
+
+            except ValueError:
+                return None

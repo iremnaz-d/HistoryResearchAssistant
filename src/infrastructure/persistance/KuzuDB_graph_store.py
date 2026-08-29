@@ -44,8 +44,8 @@ class KuzuDB(GraphStoreInterface):
             params = {
                 "id": entity.id,
                 "name": entity.name,
-                "birth_date": entity.birth_date.strftime("%Y-%m-%d") if entity.birth_date else None,
-                "death_date": entity.death_date.strftime("%Y-%m-%d") if entity.death_date else None
+                "birth_date": entity.birth_date if entity.birth_date else None,
+                "death_date": entity.death_date if entity.death_date else None
             }
 
             self.conn.execute(query, parameters = params)
@@ -60,8 +60,8 @@ class KuzuDB(GraphStoreInterface):
             params = {
                 "id": entity.id,
                 "name": entity.name,
-                "start_date": entity.start_date.strftime("%Y-%m-%d") if entity.start_date else None,
-                "end_date": entity.end_date.strftime("%Y-%m-%d") if entity.end_date else None,
+                "start_date": entity.start_date if entity.start_date else None,
+                "end_date": entity.end_date if entity.end_date else None,
                 "description": entity.description if entity.description else None
             }
 

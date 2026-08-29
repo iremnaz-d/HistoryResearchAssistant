@@ -22,9 +22,9 @@ class Router:
             vector_results = vector_text,
         )
         response = self.llm_client.generate(text = prompt)
-        if response == "True":
+        if response.text == "True":
             return True
-        elif response == "False":
+        elif response.text  == "False":
             return False
         else:
-            raise ValueError("Router could not return a value True/False")
+            raise ValueError("Router could not return a value True/False") ## buraya takılıyor
