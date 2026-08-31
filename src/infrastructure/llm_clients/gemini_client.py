@@ -1,7 +1,7 @@
 from src.config.settings import Settings
 from src.domain.interfaces.llm_client import LLMClientInterface
 from google import genai
-
+import time
 
 class GeminiClient(LLMClientInterface):
 
@@ -13,7 +13,6 @@ class GeminiClient(LLMClientInterface):
             self.client = None
         else:
             self.client = genai.Client(api_key=api_key)
-
 
     def generate(self, text, tools=None, history=None): # toolsu daha kullanmadım
         if self.client is None:
@@ -31,10 +30,26 @@ class GeminiClient(LLMClientInterface):
             {"role": "user", "parts": [{"text": text}]}
         )
 
+        max_try = 3
+        for i in range(max_try):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.settings.GEMINI_MODEL_NAME,
+                    contents=gemini_history
+                )
+                break
 
-        response = self.client.models.generate_content(
-            model = self.settings.GEMINI_MODEL_NAME,
-            contents = gemini_history
-        )
+            except Exception as e:
+                if "503" in str(e) and i < max_try-1:
+                    print(f"Gemini server is busy. Holding for 10 seconds... ({i+1}. try)")
+                    time.sleep(10)
+                else:
+                    raise e
+
+
+
+
+
+
 
         return response

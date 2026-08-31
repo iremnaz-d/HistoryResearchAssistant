@@ -24,8 +24,8 @@ class GraphIndexingService:
             entity_lookup[entity.id] = entity
 
         for relation in relation_list:
-            source = entity_lookup.get(relation.source.id)
-            target = entity_lookup.get(relation.target.id)
+            source = entity_lookup.get(relation.source_id)
+            target = entity_lookup.get(relation.target_id)
 
             if source and target:
                 self.graph_store.add_relation(

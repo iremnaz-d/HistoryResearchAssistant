@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="test and debug: ChromaDB and KuzuDB store and search functions">
-      <change afterPath="$PROJECT_DIR$/src/tests/integration/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/integration/rag.py" afterDir="false" />
+    <list default="true" id="e0fa919f-6fa0-4b87-9704-296f4eb2a5c3" name="Changes" comment="test and debug: txt file paths,">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/agent/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/agent/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graph/entity_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/rag/context_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/rag/context_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/research/research_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/research/research_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entities/historical_entities/historical_event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/llm_clients/gemini_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/llm_clients/gemini_client.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788001335874</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="test and debug: txt file paths,">
+      <option name="closed" value="true" />
+      <created>1788211168901</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1788211168901</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -240,6 +244,7 @@
     <MESSAGE value="Router and Main Research Flow" />
     <MESSAGE value="debug" />
     <MESSAGE value="test and debug: ChromaDB and KuzuDB store and search functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="test and debug: ChromaDB and KuzuDB store and search functions" />
+    <MESSAGE value="test and debug: txt file paths," />
+    <option name="LAST_COMMIT_MESSAGE" value="test and debug: txt file paths," />
   </component>
 </project>
