@@ -1,3 +1,4 @@
+import os
 from src.domain.entities.document import Document
 from src.domain.entities.research_query import Query
 from src.domain.entities.research_result import ResearchResult
@@ -10,7 +11,9 @@ class ContextBuilder:
 
     @staticmethod
     def build_web(query:Query, search_results : list[ResearchResult]):
-        with open("src/application/prompts/context_build_web.txt", "r", encoding = "utf-8") as f:
+        current_dir = os.path.dirname(__file__)
+        prompt_path = os.path.join(current_dir, "..","prompts", "context_build_web.txt")
+        with open(prompt_path, "r", encoding = "utf-8") as f:
             raw_prompt = f.read()
 
         prompt = raw_prompt.format(
@@ -25,7 +28,10 @@ class ContextBuilder:
     def build_rag(query:Query, results:list[list[ResearchResult]], documents : list[Document]):
         result_list = [i for sublist in results for i in sublist]
 
-        with open("src/application/prompts/context_build_rag.txt", "r", encoding = "utf-8") as f:
+        current_dir = os.path.dirname(__file__)
+        prompt_path = os.path.join(current_dir, "..","prompts", "context_build_rag.txt")
+
+        with open(prompt_path, "r", encoding = "utf-8") as f:
             raw_prompt = f.read()
 
         prompt = raw_prompt.format(

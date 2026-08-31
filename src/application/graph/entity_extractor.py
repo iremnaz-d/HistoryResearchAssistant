@@ -1,3 +1,4 @@
+import os
 from src.domain.entities.historical_entities.historical_concept import Concept
 from src.domain.entities.historical_entities.historical_event import Event
 from src.domain.entities.historical_entities.historical_person import Person
@@ -13,6 +14,7 @@ class EntityExtractor:
 
     def __init__(self, llm_client: LLMClientInterface):
         self.llm_client = llm_client
+        self.current_dir = os.path.dirname(__file__)
 
     def extract(self, results : list[ResearchResult] = None , query:str = None):
 
@@ -23,13 +25,15 @@ class EntityExtractor:
         if query is None:
             full_result = ResearchResult.list_to_text(results)  # web search results from search engine
 
-            with open("src/application/prompts/entity_extract_results.txt", "r", encoding="utf-8") as f:
+            prompt_path = os.path.join(self.current_dir, "..","prompts", "entity_extract_results.txt")
+            with open(prompt_path, "r", encoding="utf-8") as f:
                 raw_prompt = f.read()
 
             prompt = raw_prompt.replace("provided_sources", full_result)
 
         elif results is None:
-            with open("src/application/prompts/entity_extract_query.txt", "r", encoding="utf-8") as f:
+            prompt_path = os.path.join(self.current_dir, "..","prompts", "entity_extract_query.txt")
+            with open(prompt_path, "r", encoding="utf-8") as f:
                 raw_prompt = f.read()
 
             prompt = raw_prompt.replace("{query}", query)

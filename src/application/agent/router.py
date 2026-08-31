@@ -1,3 +1,4 @@
+import os
 from src.domain.entities.document import Document
 from src.domain.entities.research_result import ResearchResult
 from src.domain.interfaces.llm_client import LLMClientInterface
@@ -6,6 +7,7 @@ from src.domain.interfaces.llm_client import LLMClientInterface
 class Router:
     def __init__(self, llm_client: LLMClientInterface):
         self.llm_client = llm_client
+        self.current_dir = os.path.dirname(__file__)
 
 
     def is_sufficient(self,query: str, graph_results: list[list[ResearchResult]], vector_results: list[Document] ):
@@ -13,7 +15,8 @@ class Router:
         graph_text = ResearchResult.list_to_text(results = graph_result_list)
         vector_text = Document.list_to_text(documents = vector_results)
 
-        with open("src/application/prompts/router.txt", "r", encoding = "utf-8") as f:
+        prompt_path = os.path.join(self.current_dir, "..","prompts", "router.txt")
+        with open(prompt_path, "r", encoding = "utf-8") as f:
             raw_prompt = f.read()
 
         prompt = raw_prompt.format(
@@ -27,4 +30,4 @@ class Router:
         elif response.text  == "False":
             return False
         else:
-            raise ValueError("Router could not return a value True/False") ## buraya takılıyor
+            raise ValueError("Router could not return a value True/False")

@@ -1,8 +1,8 @@
+import os
 from src.application.agent.router import Router
 from src.application.rag.context_builder import ContextBuilder
 from src.application.rag.retrieval_service import GraphRetrievalService, VectorRetrievalService
 from src.domain.entities.research_query import Query
-from src.domain.interfaces.embedding_model import EmbeddingModelInterface
 from src.domain.interfaces.graph_store import GraphStoreInterface
 from src.domain.interfaces.llm_client import LLMClientInterface
 from src.domain.interfaces.search_engine import SearchEngineInterface
@@ -16,6 +16,8 @@ class ResearchService:
     def __init__(self, search_engine: SearchEngineInterface, llm_client_1: LLMClientInterface,
                  llm_client_2 :LLMClientInterface,
                  graph_db: GraphStoreInterface,vector_db : VectorStoreInterface):
+
+        self.current_dir = os.path.dirname(__file__)
 
         self.search_engine = search_engine
         self.llm_client_1 = llm_client_1
@@ -78,7 +80,9 @@ class ResearchService:
         if not chat_history:
             return query
 
-        with open("src/application/prompts/reformulate_query.txt","r",encoding="utf-8") as f:
+        prompt_path = os.path.join(self.current_dir,"..", "prompts","reformulate_query.txt")
+
+        with open(prompt_path, "r", encoding="utf-8") as f:
             raw_prompt = f.read()
 
         prompt = raw_prompt.format(
