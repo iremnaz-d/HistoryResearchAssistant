@@ -6,9 +6,11 @@ class Settings(BaseSettings):
     exa_api_key : str
     gemini_api_key : str
     groq_api_key : str
+    cerebras_api_key : str
 
     GEMINI_MODEL_NAME : str = "gemini-3.6-flash"
-    GROQ_MODEL_NAME : str = "llama-3.1-70b-versatile"
+    GROQ_MODEL_NAME : str = "gemma2-9b-it"  #not supported
+    CEREBRAS_MODEL_NAME : str = "qwen-3.8-27b"
 
     MAX_SEARCH_RESULTS : int = 5 #web search
 

@@ -103,7 +103,9 @@ class KuzuDB(GraphStoreInterface):
         source_label = source.__class__.__name__
         target_label = target.__class__.__name__
 
-        ddl_query = f"CREATE REL TABLE IF NOT EXISTS {relation_type} (FROM {source_label} TO {target_label}, evidence_url STRING)"
+        safe_relation_type = f"{source_label}_{relation_type}_{target_label}"
+
+        ddl_query = f"CREATE REL TABLE IF NOT EXISTS {safe_relation_type} (FROM {source_label} TO {target_label}, evidence_url STRING)"
         try:
             self.conn.execute(ddl_query)
         except RuntimeError:
@@ -111,7 +113,7 @@ class KuzuDB(GraphStoreInterface):
 
         query = f"""
         MATCH (src:{source_label}{{id: $source_id}}), (tgt:{target_label}{{id: $target_id}})
-        MERGE (src)-[r:{relation_type}]->(tgt)
+        MERGE (src)-[r:{safe_relation_type}]->(tgt)
         ON CREATE SET r.evidence_url = $evidence_url
         """
 

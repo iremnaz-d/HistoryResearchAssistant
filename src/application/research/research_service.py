@@ -51,7 +51,7 @@ class ResearchService:
         else:
             context = ContextBuilder.build_rag(query=query, results=graph_results, documents=vector_results)
             llm_response = self.llm_client_1.generate(context, history=chat_history)
-            return llm_response.text
+            return llm_response
 
     def create_processed_query(self, raw_query, chat_history):
         """
@@ -90,15 +90,26 @@ class ResearchService:
             user_query = query
         )
         new_query = self.llm_client_2.generate(text = prompt)
-        return new_query.text
+        return new_query
 
-    @staticmethod
-    def translate_to_english(text):
-        detected_lang = detect(text)
-        if detected_lang == "en":
-            return text, "en"
+    def translate_to_english(self, text):
+        # detected_lang = detect(text)
+        # if detected_lang == "en":
+        #     return text, "en"
+        #
+        # translator = GoogleTranslator(source='auto', target="en")
+        #
+        # translated_text = translator.translate(text)
+        # return translated_text, detected_lang
 
-        translator = GoogleTranslator(source='auto', target="en")
+        prompt_path = os.path.join(self.current_dir, "..", "prompts", "translation.txt")
 
-        translated_text = translator.translate(text)
-        return translated_text, detected_lang
+        with open(prompt_path,"r", encoding = "utf-8") as f:
+            raw_prompt = f.read()
+
+        prompt = raw_prompt.format(query = text)
+        answer = self.llm_client_2.generate(text = prompt)
+        answer_args = answer.split()
+        return answer_args[0], answer_args[1]
+
+

@@ -1,0 +1,10 @@
+Translate the given sentence to English, and also return the original language of the question.
+Stay loyal to the output format.
+
+Example Input: Atatürk kimdir?
+Example Output: Who is Atatürk? Turkish
+
+Your sentence to translate:
+{query}
+
+
