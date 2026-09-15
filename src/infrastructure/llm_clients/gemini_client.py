@@ -15,6 +15,10 @@ class GeminiClient(LLMClientInterface):
             self.client = genai.Client(api_key=api_key)
 
     def generate(self, text, tools=None, history=None): # toolsu daha kullanmadım
+
+        print("Holding on for a while in every LLM (Gemini) request for better performance...")
+        time.sleep(5)
+
         if self.client is None:
             raise ValueError("Gemini API Key not found.")
 
@@ -45,11 +49,5 @@ class GeminiClient(LLMClientInterface):
                     time.sleep(10)
                 else:
                     raise e
-
-
-
-
-
-
 
         return response

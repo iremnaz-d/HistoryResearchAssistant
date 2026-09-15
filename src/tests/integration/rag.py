@@ -1,10 +1,10 @@
 import os
 from dotenv import load_dotenv
 
-from src.infrastructure.llm_clients.cerebras_client import CerebrasClient
-from src.infrastructure.llm_clients.groq_client import GroqClient
-
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "../../../.env"))
+
+from src.infrastructure.llm_clients.cohere_client import CohereClient
+
 
 from src.application.research.main_research_flow import MainResearchService
 from src.infrastructure.embeddings.BGE_M3_embedding_model import BgeEmbedding
@@ -18,7 +18,7 @@ def test_main_research_flow():
 
     search_engine = ExaSearchEngine()
     llm_client_1 = GeminiClient()
-    llm_client_2 = CerebrasClient()  # bunun groq olması gerekiyo da error verdi
+    llm_client_2 = CohereClient()  # bunun groq olması gerekiyo da error verdi
     embedding_model = BgeEmbedding()
     graph_db = KuzuDB()
     vector_db = ChromaDB(embedding_model=embedding_model)

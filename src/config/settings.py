@@ -7,10 +7,12 @@ class Settings(BaseSettings):
     gemini_api_key : str
     groq_api_key : str
     cerebras_api_key : str
+    cohere_api_key : str
 
     GEMINI_MODEL_NAME : str = "gemini-3.6-flash"
     GROQ_MODEL_NAME : str = "gemma2-9b-it"  #not supported
     CEREBRAS_MODEL_NAME : str = "qwen-3.8-27b"
+    COHERE_MODEL_NAME : str = "command-a-plus-05-2026"
 
     MAX_SEARCH_RESULTS : int = 5 #web search
 
