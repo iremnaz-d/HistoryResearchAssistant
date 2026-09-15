@@ -2,7 +2,9 @@ Translate the given sentence to English, and also return the original language o
 Stay loyal to the output format.
 
 Example Input: Atatürk kimdir?
-Example Output: Who is Atatürk? Turkish
+Example Output: Who is Atatürk? | Turkish
+
+DO NOT FORGET TO PUT "|" between the sentence and the language!
 
 Your sentence to translate:
 {query}

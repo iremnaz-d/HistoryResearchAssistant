@@ -17,13 +17,25 @@ class ChromaDB(VectorStoreInterface):
         sources = []
         ids = []
         embeddings = []
+
+        seen_ids = set()
+
         for document in documents:
+            if not document.text or not document.text.strip():
+                continue
+
+            if document.id in seen_ids:
+                continue
+
+            seen_ids.add(document.id)
+
             texts.append(document.text)
             sources.append({"source": str(document.source)} if document.source else {"source": ""})
             ids.append(document.id)
             embeddings.append(self.embedding_model.embed(text = document.text))
 
-        self.collection.add(documents = texts, metadatas = sources, ids = ids, embeddings = embeddings)
+        if ids:
+            self.collection.add(documents=texts, metadatas=sources, ids=ids, embeddings=embeddings)
 
     def search(self, query: str):
         query_embedding = self.embedding_model.embed(text = query)

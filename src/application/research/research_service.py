@@ -10,6 +10,8 @@ from deep_translator import GoogleTranslator
 from langdetect import detect
 from src.domain.interfaces.vector_store import VectorStoreInterface
 
+##zaten translate edilen bi soruyu bida web için translate etmemeli
+
 
 class ResearchService:
 
@@ -29,15 +31,25 @@ class ResearchService:
         self.vector_retrieval_service = VectorRetrievalService(vector_db = self.vector_db)
 
     def get_research_answer_web(self, raw_query, chat_history):
+        print(f"Web query 1: {raw_query} ")
 
         query , reformulated_query = self.create_processed_query(raw_query, chat_history) # gets 'Query' object from raw_query
+
+        print(f"Web query 2: {query} ")
+
         search_results = self.search_engine.search(query) # gets web search_engines results from Search Engine
         context = ContextBuilder.build_web(query, search_results) # gets the context to send the main LLM
         llm_response = self.llm_client_1.generate(context, history = chat_history) #gets the final answer from LLM
         return llm_response.text, search_results
 
     def get_research_answer_rag(self, raw_query, chat_history):
+
+        print(f"Rag query 1: {raw_query} ")
+
         query, reformulated_query = self.create_processed_query(raw_query, chat_history)  # gets 'Query' object from raw_query
+
+        print(f"Rag query 2: {query} ")
+
 
         graph_results = self.graph_retrieval_service.retrieve(query = query.raw_query)
         vector_results = self.vector_retrieval_service.retrieve(query = query.raw_query)
@@ -62,8 +74,17 @@ class ResearchService:
         :param chat_history: chat history (list)
         :return: 'Query' Object
         """
+
+        print(f"create_processed_query raw_query: {raw_query}")
+
         query, language = self.translate_to_english(raw_query)
+
+        print(f"create_processed_query translated query: {query}, original language: {language}")
+
         reformulated_query = self.reformulate_query(query, chat_history)
+
+        print(f"create_processed_query reformulated query: {reformulated_query}")
+
         research_query = f"A detailed historical and academic article about: {reformulated_query}"
         return Query(raw_query = query, research_question = research_query, language = language), reformulated_query
 
@@ -77,6 +98,9 @@ class ResearchService:
         :param chat_history: chat history (list)
         :return: new question (string)
         """
+
+        print(f"reformulate_query raw_query: {query}")
+
         if not chat_history:
             return query
 
@@ -90,6 +114,9 @@ class ResearchService:
             user_query = query
         )
         new_query = self.llm_client_2.generate(text = prompt)
+
+        print(f"reformulate_query new_query: {new_query}")
+
         return new_query
 
     def translate_to_english(self, text):
@@ -102,6 +129,8 @@ class ResearchService:
         # translated_text = translator.translate(text)
         # return translated_text, detected_lang
 
+        print(f"translate_to_english raw text: {text}")
+
         prompt_path = os.path.join(self.current_dir, "..", "prompts", "translation.txt")
 
         with open(prompt_path,"r", encoding = "utf-8") as f:
@@ -109,7 +138,10 @@ class ResearchService:
 
         prompt = raw_prompt.format(query = text)
         answer = self.llm_client_2.generate(text = prompt)
-        answer_args = answer.split()
+        answer_args = answer.split("|")
+
+        print(f"translate_to_english translated text: {answer_args[0]}, original language: {answer_args[1]}")
+
         return answer_args[0], answer_args[1]
 
 
